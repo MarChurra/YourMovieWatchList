@@ -17,8 +17,10 @@ body {
     font-family: 'Srenada', sans-serif;
     min-height: 100vh;
     width: 100%;
+    background-color: #0e1111;
+    color: white;
+    text-shadow: 0 0 1px white;
 }
-
 
 .container {
     width: 95%;
@@ -27,16 +29,77 @@ body {
 
 header {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.2em 1em;
+    height: 30vh;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center;
+    margin-right: 1em;
+}
+
+header button {
+    background-color: #0e1111;
+    border: none;
+    font-size: 1.5rem;
+}
+
+header button:hover {
+    cursor: pointer;
+}
+
+header button:active {
+    opacity: 80%;
+}
+
+header button,
+form input,
+button {
+    color: white;
+    font-family: 'Srenada', sans-serif;
+    font-weight: 500;
+}
+
+header {
+    display: flex;
     justify-content: space-between;
 }
 
 .search-bar {
+    width: 100%;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
-form > img {
+form input {
+    border-radius: 5px;
+}
+
+form input,
+form button {
+    font-size: 1.3rem;
+    padding: 0.6em 1.5em;
+    padding-left: 3.5em
+}
+
+form button {
+    color: black;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+form img {
+    position: absolute;
+    left: 8rem;
     width: 25px;
-    opacity: 50%;
+    opacity: 75%;
+    color: white;
 }
