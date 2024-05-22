@@ -43,7 +43,7 @@ function renderMoviesList(movies) {
     console.log(movies)
     movies.forEach(function (movie) {
         console.log(movie)
-        movieID = movie.id
+        const movieID = movie.id
 
         fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options)
             .then(response => response.json())
@@ -61,7 +61,7 @@ function renderMoviesList(movies) {
                     <p>${movie.vote_average}</p>
                     <p>${movie.overview}</p>
                     `
-                    moviesListEl.innerHTML = listHTML
+                    moviesListEl.innerHTML += listHTML
             })
             .catch(err => console.error(err));
     })
