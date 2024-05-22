@@ -14,7 +14,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Srenada', sans-serif;
+    font-family: sans-serif;
     min-height: 100vh;
     width: 100%;
     background-color: #0e1111;
@@ -23,29 +23,35 @@ body {
 }
 
 .container {
-    width: 95%;
+    width: 75%;
     margin: 0 auto;
+}
+
+nav {
+    border-bottom: 1.5px solid white;
+    border-radius: 10px;
+    width: 100%;
 }
 
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0.2em 1em;
     height: 30vh;
 }
 
 header h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 500;
     text-align: center;
-    margin-right: 1em;
+    font-family: 'Srenada', sans-serif;
 }
 
 header button {
     background-color: #0e1111;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    margin: 1em 0;
 }
 
 header button:hover {
@@ -58,7 +64,7 @@ header button:active {
 
 header button,
 form input,
-button {
+form button {
     color: white;
     font-family: 'Srenada', sans-serif;
     font-weight: 500;
@@ -70,36 +76,50 @@ header {
 }
 
 .search-bar {
-    width: 100%;
-    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
 form input {
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    z-index: 1;
+    background-color: rgb(146, 146, 146);
+    text-align: left;
 }
 
-form input,
-form button {
-    font-size: 1.3rem;
+.inputDiv {
+    position: absolute;
+    width: 100%;
+}
+
+form input {
+    font-size: 1.2rem;
     padding: 0.6em 1.5em;
-    padding-left: 3.5em
+    padding-left: 2.5em;
+    color: black;
 }
 
 form button {
+    font-size: 1.2rem;
+    padding: 0.6em 1.5em;
     color: black;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    text-align: left; 
+    border: none; 
+    cursor: pointer;
 }
 
-
 form img {
-    position: absolute;
-    left: 8rem;
-    width: 25px;
+    margin-right: -2.25em;
+    width: 20px;
     opacity: 75%;
-    color: white;
+    z-index: 2;
+    pointer-events: none;
+}
+
+form {
+    margin-bottom: 1.5em;
 }
