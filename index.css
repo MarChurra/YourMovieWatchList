@@ -51,7 +51,7 @@ header h1 {
 header button {
     background-color: #0e1111;
     border: none;
-    font-size: 1.25rem;
+    font-size: 1.6rem;
     margin: 1em 0;
 }
 
@@ -69,10 +69,15 @@ header button:active {
     opacity: 80%;
 }
 
-form input,
-form button {
-    color: white;
-    font-weight: 500;
+#searchBar,
+#searchBtn {
+    font-weight: 600;
+    background-color: white;
+}
+
+#searchBar {
+    background-color: rgb(183, 182, 182);
+    color: black;
 }
 
 header {
@@ -122,4 +127,76 @@ form img {
 
 #moviesListEl {
     margin-top: 4em;
+}
+
+#addToWatchListBtn {
+    width: 25px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(130deg) brightness(100%) contrast(100%);
+    display: inline-block;
+    align-self: flex-start;
+    margin: 0 0.5em;
+    cursor: pointer;
+}
+
+#addToWatchListBtn:hover {
+    transform: scale(1.2);
+}
+
+#addToWatchListBtn:active {
+    opacity: 0.8;
+}
+
+.movie-wrapper {
+    display: grid;
+    grid-template-areas:
+        "poster title score"
+        "poster details details"
+        "poster overview overview "
+    ;
+    column-gap: 1em;
+    margin-bottom: 2em;
+    padding-bottom: 3em;
+    border-bottom: 1px solid white;
+    font-size: 1.4rem;
+}
+
+.movie-poster {
+    grid-area: poster;
+    width: 200px;
+    height: auto;
+    margin-right: 1.5em;
+}
+
+.movie-title {
+    grid-area: title;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0;
+
+}
+
+.movie-runtime {
+    grid-area: runtime;
+    margin: 0 1em 0 0;
+}
+
+.movie-score {
+    grid-area: score;
+}
+
+.movie-overview {
+    grid-area: overview;
+}
+
+.movie-score img {
+    width: 20px;
+}
+
+.movie-details {
+    display: flex;
+    grid-area: details;
+}
+
+.movie-genres {
+    margin: 0 1em 0 0;
 }

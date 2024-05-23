@@ -24,7 +24,7 @@ searchBar.addEventListener('keydown', function (e) {
 
 function searchMovie() {
     const userQuery = searchBar.value.trim()
-    console.log(userQuery)
+    moviesListEl.innerHTML = ""
 
     if (!userQuery) {
         window.alert("Please enter something into the search bar")
@@ -40,28 +40,32 @@ function searchMovie() {
 }
 
 function renderMoviesList(movies) {
-    console.log(movies)
     movies.forEach(function (movie) {
-        console.log(movie)
         const movieID = movie.id
 
         fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 let listHTML = ''
                 const moviesListEl = document.getElementById('moviesListEl')
                 listHTML +=
                     `
-                    <img src=${movie.poster_path}>
-                    <button><span></span>Add to Watchlist</button>
-                    <h2>${movie.title}</h2>
-                    <p>${movie.runtime}</p>
-                    <p>${movie.genres}</p>
-                    <p>${movie.vote_average}</p>
-                    <p>${movie.overview}</p>
+                <div class = "movie-wrapper container">
+                    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="${data.title} poster">
+                    <h2 class ="movie-title" >${data.title}</h2>
+                    <div class ="movie-details">
+                    <p class ="movie-runtime" >${data.runtime} minutes</p>
+                    <p class="movie-genres" >${data.genres.map(genre => genre.name).join(',  ')}</p>
+                    <img id="addToWatchListBtn"src="/images/plus.png"><span>Watchlist</span>
+                    </div>
+                    <div class="movie-score">
+                    <img src ="/images/star.png">
+                    <span>${data.vote_average}</span>
+                    </div>
+                    <p class= "movie-overview">${data.overview}</p>
+                </div>
                     `
-                    moviesListEl.innerHTML += listHTML
+                moviesListEl.innerHTML += listHTML
             })
             .catch(err => console.error(err));
     })
