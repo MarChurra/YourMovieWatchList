@@ -1,5 +1,7 @@
 let returnedMovies = []
 let movieID = ""
+let watchlist = []
+
 
 const options = {
     method: 'GET', headers: {
@@ -42,6 +44,7 @@ function searchMovie() {
 function renderMoviesList(movies) {
     movies.forEach(function (movie) {
         const movieID = movie.id
+        console.log(typeof(movieID))
 
         fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options)
             .then(response => response.json())
@@ -56,7 +59,7 @@ function renderMoviesList(movies) {
                     <div class ="movie-details">
                     <p class ="movie-runtime" >${data.runtime} minutes</p>
                     <p class="movie-genres" >${data.genres.map(genre => genre.name).join(',  ')}</p>
-                    <img id="addToWatchListBtn"src="/images/plus.png"><span>Watchlist</span>
+                    <img id="addToWatchListBtn" class="addToWatchListBtn" data-movie-id="${movieID}" src="/images/plus.png"><span>Watchlist</span>
                     </div>
                     <div class="movie-score">
                     <img src ="/images/star.png">
@@ -71,9 +74,30 @@ function renderMoviesList(movies) {
     })
 }
 
-
 searchBtn.addEventListener('click', searchMovie)
 
+const savedMovies = localStorage.getItem('watchList')
+if (savedMovies) {
+    watchlist = JSON.parse(savedMovies)
+}
+else {
+    watchlist = []
+}
+
+moviesListEl.addEventListener('click', function (e) {
+    if (e.target.classList.contains('addToWatchListBtn')) {
+        const movieId = e.target.dataset.movieId
+        if (!watchlist.includes(movieId)) {
+            watchlist.push(movieId)
+            window.alert(`Added to watchlist`)
+            console.log(watchlist)
+            localStorage.setItem('watchList', JSON.stringify(watchlist))
+        }
+    }
+})
+
+console.log(watchlist)
+console.log(savedMovies)
 
 
 
