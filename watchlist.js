@@ -6,22 +6,23 @@ const options = {
     }
 }
 
-const storedWatchList = localStorage.getItem("watchList")
+let storedWatchList = JSON.parse(localStorage.getItem("watchList"))
 
-if (storedWatchList) {
-    const watchlist = JSON.parse(storedWatchList)
-    renderWatchlist(watchlist)
+if (storedWatchList.length > 0) {
+    renderWatchlist(storedWatchList)
 }
 
 function renderWatchlist(watchlist) {
+
     watchlist.forEach(function (movie) {
+
+        const watchlistEl = document.getElementById('watchListMovies')
+        watchlistEl.innerHTML = ''
 
         fetch(`https://api.themoviedb.org/3/movie/${movie}`, options)
             .then(response => response.json())
             .then(data => {
-                const movieId = movie.id
                 let listHTML = ''
-                const watchlistEl = document.getElementById('watchListMovies')
                 listHTML +=
                     `
                 <div class = "movie-wrapper container">
@@ -30,7 +31,7 @@ function renderWatchlist(watchlist) {
                     <div class ="movie-details">
                     <p class ="movie-runtime" >${data.runtime} minutes</p>
                     <p class="movie-genres" >${data.genres.map(genre => genre.name).join(',  ')}</p>
-                    <img class="removeBtn" data-movie-id="${movieId}" src="/images/x-mark.png"><span>Remove</span>
+                    <img class="removeBtn" data-movieid="${movie}" src="/images/x-mark.png"><span>Remove</span>
                     </div>
                     <div class="movie-score">
                     <img src ="/images/star.png">
@@ -47,8 +48,16 @@ function renderWatchlist(watchlist) {
 
 document.getElementById('watchListMovies').addEventListener('click', function (e) {
     if (e.target.classList.contains('removeBtn')) {
-        const selectedMovie = e.target.dataset.movieId
-        const index = storedWatchList.findIndex(movie => movie === selectedMovie)
-        storedWatchList.slice(index, 1)
+        const selectedMovie = (e.target.dataset.movieid)
+
+        const watchListIndex = storedWatchList.findIndex(movie => movie === selectedMovie)
+       
+
+        if (watchListIndex !== -1) {
+            storedWatchList.splice(watchListIndex, 1)
+            localStorage.setItem("watchlist", JSON.stringify(storedWatchList))
+            renderWatchlist(storedWatchList)
+        }
+
     }
 })

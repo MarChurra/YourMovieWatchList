@@ -44,7 +44,7 @@ function searchMovie() {
 function renderMoviesList(movies) {
     movies.forEach(function (movie) {
         const movieID = movie.id
-        console.log(typeof(movieID))
+        console.log(typeof (movieID))
 
         fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options)
             .then(response => response.json())
