@@ -1,4 +1,3 @@
-
 const options = {
     method: 'GET', headers: {
         accept: 'application/json',
@@ -8,8 +7,10 @@ const options = {
 
 let storedWatchList = JSON.parse(localStorage.getItem("watchList"))
 
-if (storedWatchList.length > 0) {
-    renderWatchlist(storedWatchList)
+console.log(storedWatchList);
+
+if (storedWatchList && storedWatchList.length > 0) {
+    renderWatchlist(storedWatchList);
 }
 
 function renderWatchlist(watchlist) {
@@ -51,13 +52,17 @@ document.getElementById('watchListMovies').addEventListener('click', function (e
         const selectedMovie = (e.target.dataset.movieid)
 
         const watchListIndex = storedWatchList.findIndex(movie => movie === selectedMovie)
-       
 
         if (watchListIndex !== -1) {
-            storedWatchList.splice(watchListIndex, 1)
-            localStorage.setItem("watchlist", JSON.stringify(storedWatchList))
-            renderWatchlist(storedWatchList)
+            storedWatchList.splice(watchListIndex, 1);
+            localStorage.setItem("watchList", JSON.stringify(storedWatchList));
+            renderWatchlist(storedWatchList);
         }
 
+        if (storedWatchList.length === 0) {
+            const watchlistEl = document.getElementById('watchListMovies');
+            watchlistEl.innerHTML = '';
+            console.log(`No movies were found`);
+        }
     }
 })

@@ -1,5 +1,3 @@
-let returnedMovies = []
-let movieID = ""
 let watchlist = []
 
 
@@ -26,6 +24,7 @@ searchBar.addEventListener('keydown', function (e) {
 
 function searchMovie() {
     const userQuery = searchBar.value.trim()
+    searchBar.value = ""
     moviesListEl.innerHTML = ""
 
     if (!userQuery) {
@@ -76,28 +75,15 @@ function renderMoviesList(movies) {
 
 searchBtn.addEventListener('click', searchMovie)
 
-const savedMovies = localStorage.getItem('watchList')
-if (savedMovies) {
-    watchlist = JSON.parse(savedMovies)
-}
-else {
-    watchlist = []
-}
-
 moviesListEl.addEventListener('click', function (e) {
     if (e.target.classList.contains('addToWatchListBtn')) {
         const movieId = e.target.dataset.movieId
         if (!watchlist.includes(movieId)) {
             watchlist.push(movieId)
             window.alert(`Added to watchlist`)
-            console.log(watchlist)
-            localStorage.setItem('watchList', JSON.stringify(watchlist))
+            localStorage.setItem("watchList", JSON.stringify(watchlist));
         }
     }
 })
-
-console.log(watchlist)
-console.log(savedMovies)
-
 
 
