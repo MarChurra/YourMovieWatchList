@@ -72,13 +72,16 @@ header a:active {
     opacity: 80%;
 }
 
-#searchBar, #watchlistSearch,
-#searchBtn, #watchListSearchBtn {
+#searchBar,
+#watchlistSearch,
+#searchBtn,
+#watchListSearchBtn {
     font-weight: 600;
     background-color: white;
 }
 
-#searchBar, #watchlistSearch {
+#searchBar,
+#watchlistSearch {
     background-color: rgb(183, 182, 182);
     color: black;
 }
@@ -109,7 +112,7 @@ form input {
     color: black;
 }
 
-form button  {
+form button {
     font-size: 1.2rem;
     padding: 0.6em 1.5em;
     color: black;
@@ -132,7 +135,8 @@ form img {
     margin-top: 4em;
 }
 
-#addToWatchListBtn, .removeBtn {
+#addToWatchListBtn,
+.removeBtn {
     width: 25px;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(130deg) brightness(100%) contrast(100%);
     display: inline-block;
@@ -141,11 +145,13 @@ form img {
     cursor: pointer;
 }
 
-#addToWatchListBtn:hover, .removeBtn:hover {
+#addToWatchListBtn:hover,
+.removeBtn:hover {
     transform: scale(1.2);
 }
 
-#addToWatchListBtn:active, .removeBtn:active{
+#addToWatchListBtn:active,
+.removeBtn:active {
     opacity: 0.8;
 }
 
@@ -204,3 +210,23 @@ form img {
     margin: 0 1em 0 0;
 }
 
+@media (max-width:750px) {
+    nav .container {
+        width: 95%;
+    }
+
+   p, span {
+    font-size: 0.8rem;
+    line-height: 1.5;
+   }
+
+   .movie-poster {
+    width: 175px;
+    margin-right: 1em;
+   }
+
+   #addToWatchListBtn {
+    width: 20px;
+   }
+
+}
