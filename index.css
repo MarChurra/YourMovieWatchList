@@ -198,6 +198,11 @@ form img {
     grid-area: score;
 }
 
+.movie-score span {
+    margin-left: 0.5em;
+}
+
+
 .movie-overview {
     grid-area: overview;
 }
@@ -256,7 +261,7 @@ form img {
     }
 
     header a {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
 
     nav .container {
@@ -271,24 +276,48 @@ form img {
 
     .movie-poster {
         width: 175px;
+        height: auto;
         margin-right: 1em;
+    }
+
+    .movie-title {
+        font-size: 1rem;
+    }
+
+    .movie-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
     }
 
     #addToWatchListBtn {
         width: 20px;
+        display: inline-block;
+        align-self: flex-start;
+        order: 2;
+    }
+
+    .movie-details span {
+        display: inline-block;
+        align-self: flex-start;
+    }
+
+    .movie-score span {
+        font-size: 1.1rem;
+        margin-left: 0.2em;
     }
 
     #searchBar,
     #watchlistSearch,
     #searchBtn,
     #watchListSearchBtn {
-       font-size: 0.8rem;
+        font-size: 0.8rem;
     }
 
     .error-message p {
         font-size: 1.5rem;
     }
-    
+
     .error-message img {
         filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(130deg) brightness(100%) contrast(100%);
         width: 100px;
