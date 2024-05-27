@@ -293,4 +293,13 @@ form img {
         filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(130deg) brightness(100%) contrast(100%);
         width: 100px;
     }
+
+    form img {
+        margin-right: -1.5em;
+        width: 15px;
+    }
+
+    .notification {
+        font-size: 0.8rem;
+    }
 }

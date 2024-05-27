@@ -1,4 +1,5 @@
 let watchlist = []
+const notification = document.getElementById('notification')
 
 
 const options = {
@@ -22,21 +23,21 @@ searchBar.addEventListener('keydown', function (e) {
     }
 })
 
+export function showNotification(message) {
+    notification.textContent = message
+    notification.style.visibility = 'visible'
+    setTimeout(function () {
+        notification.style.visibility = 'hidden'
+    }, 2000)
+}
+
 function searchMovie() {
     const userQuery = searchBar.value.trim()
     searchBar.value = ""
     moviesListEl.innerHTML = ""
 
     if (!userQuery) {
-        showNotification()
-    }
-
-    function showNotification() {
-        const notification = document.getElementById('notification')
-        notification.style.visibility = 'visible'
-        setTimeout(function () {
-            notification.style.visibility = 'hidden'
-        }, 1500)
+        showNotification('Please insert something in the seach bar')
     }
 
     fetch(`https://api.themoviedb.org/3/search/movie?query=${userQuery}&include_adult=false&language=en-US&page=1`, options)
@@ -60,6 +61,7 @@ function renderMoviesList(movies) {
         `
         return
     }
+
     movies.forEach(function (movie) {
         const movieID = movie.id
 
@@ -83,12 +85,8 @@ function renderMoviesList(movies) {
                     <span>${data.vote_average}</span>
                     </div>
                     <p class= "movie-overview">${data.overview}</p>
-                </div>
+                    </div>
                     `
-                if (data.length === 0) {
-                    document.getElementById('watchListMovies').innerHTML = `
-                        <p class="filler-text">Nothing here yet...</p>`
-                }
                 moviesListEl.innerHTML += listHTML
             })
             .catch(err => console.error(err));
@@ -102,8 +100,11 @@ moviesListEl.addEventListener('click', function (e) {
         const movieId = e.target.dataset.movieId
         if (!watchlist.includes(movieId)) {
             watchlist.push(movieId)
-            window.alert(`Added to watchlist`)
+            showNotification('Movie added to the watchlist')
             localStorage.setItem("watchList", JSON.stringify(watchlist));
+        }
+        else if (watchlist.includes(movieId)) {
+            showNotification('Movie already added to the watchlist')
         }
     }
 })

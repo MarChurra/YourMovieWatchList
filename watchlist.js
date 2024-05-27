@@ -1,3 +1,5 @@
+
+
 const options = {
     method: 'GET', headers: {
         accept: 'application/json',
@@ -61,8 +63,10 @@ document.getElementById('watchListMovies').addEventListener('click', function (e
 
         if (storedWatchList.length === 0) {
             const watchlistEl = document.getElementById('watchListMovies');
-            watchlistEl.innerHTML = '';
-            console.log(`No movies were found`);
+            watchlistEl.innerHTML = ` <p class="filler-text">Nothing here yet...</p>`
         }
     }
 })
+
+
+
