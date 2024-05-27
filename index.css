@@ -15,10 +15,10 @@ body {
     min-width: 320px;
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: "Montserrat", sans-serif;
     min-height: 100vh;
     width: 100%;
-    background-color: #0e1111;
+    background-color: #232b2b;
     color: white;
     text-shadow: 0 0 1px white;
 }
@@ -53,7 +53,9 @@ header h1 {
 
 
 header a {
-    background-color: #0e1111;
+    background-color: black;
+    padding: 0.5em 1em;
+    border-radius: 5px;
     border: none;
     font-size: 1.6rem;
     margin: 1em 0;
@@ -103,6 +105,8 @@ form input {
     z-index: 1;
     background-color: rgb(146, 146, 146);
     text-align: left;
+    width: 75%;
+    max-width: 500px;
 }
 
 form input {
@@ -165,8 +169,9 @@ form img {
     margin: 3em auto;
     padding-bottom: 3em;
     border-bottom: 1px solid white;
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     row-gap: 1em;
+    width: 95%;
 }
 
 .movie-poster {
@@ -215,18 +220,19 @@ form img {
         width: 95%;
     }
 
-   p, span {
-    font-size: 0.8rem;
-    line-height: 1.5;
-   }
+    p,
+    span {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
 
-   .movie-poster {
-    width: 175px;
-    margin-right: 1em;
-   }
+    .movie-poster {
+        width: 175px;
+        margin-right: 1em;
+    }
 
-   #addToWatchListBtn {
-    width: 20px;
-   }
+    #addToWatchListBtn {
+        width: 20px;
+    }
 
 }

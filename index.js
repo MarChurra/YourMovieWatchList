@@ -53,7 +53,7 @@ function renderMoviesList(movies) {
                 listHTML +=
                     `
                 <div class = "movie-wrapper container">
-                    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="${data.title} poster">
+                    <img class="movie-poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="Poster Unavailable">
                     <h2 class ="movie-title" >${data.title}</h2>
                     <div class ="movie-details">
                     <p class ="movie-runtime" >${data.runtime} minutes</p>
