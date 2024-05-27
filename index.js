@@ -28,7 +28,15 @@ function searchMovie() {
     moviesListEl.innerHTML = ""
 
     if (!userQuery) {
-        window.alert("Please enter something into the search bar")
+        showNotification()
+    }
+
+    function showNotification() {
+        const notification = document.getElementById('notification')
+        notification.style.visibility = 'visible'
+        setTimeout(function () {
+            notification.style.visibility = 'hidden'
+        }, 1500)
     }
 
     fetch(`https://api.themoviedb.org/3/search/movie?query=${userQuery}&include_adult=false&language=en-US&page=1`, options)
@@ -41,16 +49,26 @@ function searchMovie() {
 }
 
 function renderMoviesList(movies) {
+    const moviesListEl = document.getElementById('moviesListEl')
+    if (movies.length === 0) {
+        moviesListEl.innerHTML =
+            `
+            <div class = "error-message">
+            <img src="images/film-reel.png">
+            <p>No movies found</p>
+            </div>
+        `
+        return
+    }
     movies.forEach(function (movie) {
         const movieID = movie.id
-        console.log(typeof (movieID))
 
         fetch(`https://api.themoviedb.org/3/movie/${movieID}`, options)
             .then(response => response.json())
             .then(data => {
-                let listHTML = ''
+                let listHTML = ` <p class="filler-text">Nothing here yet...</p>`
                 const moviesListEl = document.getElementById('moviesListEl')
-                listHTML +=
+                listHTML =
                     `
                 <div class = "movie-wrapper container">
                     <img class="movie-poster" src="https://image.tmdb.org/t/p/w500${data.poster_path}" alt="Poster Unavailable">
@@ -67,6 +85,10 @@ function renderMoviesList(movies) {
                     <p class= "movie-overview">${data.overview}</p>
                 </div>
                     `
+                if (data.length === 0) {
+                    document.getElementById('watchListMovies').innerHTML = `
+                        <p class="filler-text">Nothing here yet...</p>`
+                }
                 moviesListEl.innerHTML += listHTML
             })
             .catch(err => console.error(err));

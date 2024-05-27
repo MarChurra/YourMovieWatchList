@@ -215,7 +215,50 @@ form img {
     margin: 0 1em 0 0;
 }
 
+.filler-text {
+    text-align: center;
+    padding-top: 2.5em;
+    font-size: 2rem;
+    font-family: 'Srenada', sans-serif;
+}
+
+.error-message {
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Srenada', sans-serif;
+}
+
+.error-message img {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(130deg) brightness(100%) contrast(100%);
+    width: 150px;
+}
+
+.notification {
+    background-color: black;
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5em 1em;
+    border-radius: 25px;
+    font-weight: bold;
+    visibility: hidden;
+    font-size: 1.25rem;
+    z-index: 2;
+}
+
 @media (max-width:750px) {
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header a {
+        font-size: 1.25rem;
+    }
+
     nav .container {
         width: 95%;
     }
@@ -235,4 +278,19 @@ form img {
         width: 20px;
     }
 
+    #searchBar,
+    #watchlistSearch,
+    #searchBtn,
+    #watchListSearchBtn {
+       font-size: 0.8rem;
+    }
+
+    .error-message p {
+        font-size: 1.5rem;
+    }
+    
+    .error-message img {
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(130deg) brightness(100%) contrast(100%);
+        width: 100px;
+    }
 }
